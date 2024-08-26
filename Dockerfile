@@ -4,7 +4,6 @@ WORKDIR /flaskintro
 
 COPY ./src /flaskintro/src
 COPY ./tests /flaskintro/tests
-COPY ./env /flaskintro/env
 COPY ./requirements.txt /flaskintro
 COPY ./pytest.ini /flaskintro
 
