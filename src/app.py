@@ -11,14 +11,16 @@ if os.getenv("FLASK_ENV") != "production":
     load_dotenv()
 else:
     flaskHost = "0.0.0.0"
-    
+
 app: Flask = create_app(os.getenv("CONFIG_MODE"))
 
 register_routes(app)
 
-@app.route('/')
+
+@app.route("/")
 def index():
     return "Hi from Ivan!"
+
 
 if __name__ == "__main__":
     app.run(host=flaskHost, debug=True)

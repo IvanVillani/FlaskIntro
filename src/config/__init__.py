@@ -7,9 +7,10 @@ from .config import config
 db = SQLAlchemy()
 migrate = Migrate()
 
+
 def create_app(config_mode: str) -> Flask:
     app: Flask = Flask(__name__)
-    
+
     app.config.from_object(config[config_mode]())
 
     db.init_app(app)
