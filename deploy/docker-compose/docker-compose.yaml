@@ -1,0 +1,33 @@
+version: "1.0.0"
+services:
+  postgresdb:
+    build: ./postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - ./composer-env/postgres.env
+    healthcheck:
+      test: [ "CMD-SHELL", "/usr/bin/pg_isready -U ivan -d flaskdemo" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: on-failure:5
+
+  backend:
+    build: ../../
+    env_file:
+      - ./composer-env/backend.env
+    ports:
+      - "5013:5000"
+    stdin_open: true
+    tty: true
+    volumes:
+      - backend-logs:/backend/server.log
+    depends_on:
+      postgresdb:
+        condition: service_healthy
+    restart: on-failure:5
+
+volumes:
+  postgres-data:
+  backend-logs:
