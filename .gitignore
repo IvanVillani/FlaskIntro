@@ -1,0 +1,29 @@
+# Compiled class file
+*.class
+**/_output/bin/
+**/__debug_bin
+
+# Log file
+*.log
+
+# Kube configs
+config-*.yaml
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.tar.gz
+*.tgz
+*.rar
+
+# VSCode
+**/.editorconfig
+
+# MacOS
+**/.DS_Store
+
+# Password files
+*pass*
+*token*
